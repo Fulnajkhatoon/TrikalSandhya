@@ -6,6 +6,7 @@ import Register from "./Register";
 import Navbar from "./Navbar"; 
 import AboutUs from "./About";
 import ContactUs from "./Contact";
+import UserManagement from './UserManagement';
 import Home from './Home'
 import Ramayan from "./Ramayan";
 import Geeta from "./Geeta";
@@ -16,6 +17,7 @@ function App() {
     <Router>
       <Navbar /> 
       <Routes>
+        <Route path="/UserManagement" element={<UserManagement />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<AboutUs />} />
