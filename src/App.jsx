@@ -7,6 +7,9 @@ import Navbar from "./Navbar";
 import AboutUs from "./About";
 import ContactUs from "./Contact";
 import Home from './Home'
+import Ramayan from "./Ramayan";
+import Geeta from "./Geeta";
+import RamayanChapters from "./RamSeetaMilan"
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/ramayan" element={<Ramayan />} />
+        <Route path="/geeta" element={<Geeta />} />
+        <Route path="/ram-seeta-milan" element={<RamayanChapters />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

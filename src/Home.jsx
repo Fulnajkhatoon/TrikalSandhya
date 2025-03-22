@@ -8,14 +8,14 @@ const Home = () => {
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="/img/2.jpg" className="d-block w-100" alt="Slide 1" style={{ height: "500px", objectFit: "cover" }} />
+            <img src="/img/2.jpg" className="d-block w-100" alt="Slide 1" style={{ height: "400px", objectFit: "cover" }} />
             <div className="carousel-caption d-none d-md-block">
               <h5>Explore Ramayan</h5>
               <p>Discover the life and teachings of Lord Rama.</p>
             </div>
           </div>
           <div className="carousel-item">
-            <img src="/img/1.jpg" className="d-block w-100" alt="Slide 2" style={{ height: "500px", objectFit: "cover" }} />
+            <img src="/img/1.jpg" className="d-block w-100" alt="Slide 2" style={{ height: "400px", objectFit: "cover" }} />
             <div className="carousel-caption d-none d-md-block">
               <h5>Explore Geeta</h5>
               <p>Learn the teachings of Lord Krishna in the Bhagavad Gita.</p>
@@ -39,24 +39,24 @@ const Home = () => {
         <div className="row row-cols-1 row-cols-md-2 g-4">
           {/* Ramayan Card */}
           <div className="col">
-            <div className="card shadow-lg">
-              <img src="/img/ramayan1.png" className="card-img-top" alt="Ramayan" style={{ height: "200px", objectFit: "cover" }} />
-              <div className="card-body">
+            <div className="card shadow-lg h-100">
+              <img src="/img/ramayan1.png" className="card-img-top" alt="Ramayan" style={{ width: "150px", height: "150px", objectFit: "cover", margin: "auto" }} />
+              <div className="card-body d-flex flex-column text-center">
                 <h5 className="card-title">Ramayan</h5>
                 <p className="card-text">Dive into the journey of Lord Rama and learn valuable lessons.</p>
-                <a href="/ramayan" className="btn btn-outline-primary">Read More</a>
+                <a href="/ramayan" className="btn btn-outline-primary mt-auto">Read More</a>
               </div>
             </div>
           </div>
 
           {/* Geeta Card */}
           <div className="col">
-            <div className="card shadow-lg">
-              <img src="/img/geeta2.png" className="card-img-top" alt="Geeta" style={{ height: "200px", objectFit: "cover" }} />
-              <div className="card-body">
+            <div className="card shadow-lg h-100">
+              <img src="/img/geeta2.png" className="card-img-top" alt="Geeta" style={{ width: "150px", height: "150px", objectFit: "cover", margin: "auto" }} />
+              <div className="card-body d-flex flex-column text-center">
                 <h5 className="card-title">Geeta</h5>
                 <p className="card-text">Understand the deep wisdom of the Bhagavad Gita.</p>
-                <a href="/geeta" className="btn btn-outline-primary">Read More</a>
+                <a href="/geeta" className="btn btn-outline-primary mt-auto">Read More</a>
               </div>
             </div>
           </div>
