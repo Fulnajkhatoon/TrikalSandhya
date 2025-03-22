@@ -10,7 +10,8 @@ import Home from './Home'
 import Ramayan from "./Ramayan";
 import Geeta from "./Geeta";
 import RamayanChapters from "./RamSeetaMilan"
-
+import Shloka from "./Shloka"
+import GeetaShlokas from "./Geeta_shloka";
 function App() {
   return (
     <Router>
@@ -23,6 +24,9 @@ function App() {
         <Route path="/ramayan" element={<Ramayan />} />
         <Route path="/geeta" element={<Geeta />} />
         <Route path="/ram-seeta-milan" element={<RamayanChapters />} />
+        <Route path="/shloka/:chapter" element={<Shloka />} />
+        <Route path="/geeta-shlok/:adhyay" element={<GeetaShlokas />} />
+
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
