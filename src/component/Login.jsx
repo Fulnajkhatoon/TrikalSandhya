@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const Login = () => {
   // State to handle form inputs
@@ -70,8 +70,8 @@ const Login = () => {
               </form>
             </div>
             <div className="card-footer text-center">
-            <p>
-                Already have an account? <a href="/register">Login</a>
+              <p>
+                <Link to="/register">Register</Link>
               </p>
             </div>
           </div>

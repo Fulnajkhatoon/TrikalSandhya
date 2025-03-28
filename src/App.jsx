@@ -1,34 +1,36 @@
 import "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./component/Navbar";
+import Home from "./component/Home";
+import Login from "./component/Login";
+import Register from "./component/Register";
+import About from "./component/About";
+import Contact from "./component/Contact";
+import Ramayan from "./component/Ramayan";
+import Geeta from "./component/Geeta";
+import RamSeetaMilan from "./component/RamSeetaMilan";
+import RamayanSholok from "./component/RamayanSholok";
+import GeetaShlok from "./component/GeetaShlok";
+import Footer from "./component/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "./Login";
-import Register from "./Register";
-import Navbar from "./Navbar"; 
-import AboutUs from "./About";
-import ContactUs from "./Contact";
-import Home from './Home'
-import Ramayan from "./Ramayan";
-import Geeta from "./Geeta";
-import RamayanChapters from "./RamSeetaMilan"
-import Shloka from "./Shloka"
-import GeetaShlokas from "./Geeta_shloka";
+
 function App() {
   return (
     <Router>
-      <Navbar /> 
+      <Navbar />
       <Routes>
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/ramayan" element={<Ramayan />} />
         <Route path="/geeta" element={<Geeta />} />
-        <Route path="/ram-seeta-milan" element={<RamayanChapters />} />
-        <Route path="/shloka/:chapter" element={<Shloka />} />
-        <Route path="/geeta-shlok/:adhyay" element={<GeetaShlokas />} />
-
-        <Route path="/" element={<Home />} />
+        <Route path="/ramayansholok" element={<RamayanSholok />} />
+        <Route path="/geeta-shlok" element={<GeetaShlok />} />
+        <Route path="/ram-seeta-milan" element={<RamSeetaMilan />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

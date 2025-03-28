@@ -1,7 +1,10 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
+  const navigate = useNavigate(); // Hook for navigation
+
   // State to handle form inputs
   const [formData, setFormData] = useState({
     newUsername: "",
@@ -10,24 +13,32 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  // State to handle registration success message
+  // State to handle registration success message & errors
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   // Handle input changes
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD:src/Register.jsx
 
     // Validate passwords match
+=======
+    setError(""); // Clear previous errors
+
+    // Validation: Check if passwords match
+>>>>>>> c4c52e7b1da817077189b41733486416e054a9fc:src/component/Register.jsx
     if (formData.newPassword !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      setError("Passwords do not match!");
       return;
     }
 
+<<<<<<< HEAD:src/Register.jsx
     try {
       const response = await fetch("http://localhost:5000/users/register", {
         method: "POST",
@@ -55,6 +66,15 @@ const Register = () => {
     } catch (error) {
       console.error("Error registering user:", error);
     }
+=======
+    // Simulate registration success
+    setSuccess(true);
+
+    // Redirect to login page after 2 seconds
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+>>>>>>> c4c52e7b1da817077189b41733486416e054a9fc:src/component/Register.jsx
   };
 
   return (
@@ -68,9 +88,10 @@ const Register = () => {
             <div className="card-body">
               {success && (
                 <div className="alert alert-success text-center">
-                  Registration Successful! Please <a href="/login">Login</a>.
+                  Registration Successful! Redirecting to <Link to="/login">Login</Link>...
                 </div>
               )}
+              {error && <div className="alert alert-danger text-center">{error}</div>}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -117,14 +138,18 @@ const Register = () => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-100">
-                  Register
+                <button type="submit" className="btn btn-primary w-100" disabled={success}>
+                  {success ? "Registering..." : "Register"}
                 </button>
               </form>
             </div>
             <div className="card-footer text-center">
               <p>
+<<<<<<< HEAD:src/Register.jsx
                 Already have an account? <a href="/login">Login</a>
+=======
+                Already have an account? <Link to="/login">Login</Link>
+>>>>>>> c4c52e7b1da817077189b41733486416e054a9fc:src/component/Register.jsx
               </p>
             </div>
           </div>
