@@ -19,17 +19,42 @@ const Register = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Example validation (ensure passwords match)
+
+    // Validate passwords match
     if (formData.newPassword !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-    
-    // Simulate registration success
-    setSuccess(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/users/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          newUsername: formData.newUsername,
+          email: formData.email,
+          newPassword: formData.newPassword,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        setFormData({
+          newUsername: "",
+          email: "",
+          newPassword: "",
+          confirmPassword: "",
+        });
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
   };
 
   return (
@@ -99,7 +124,7 @@ const Register = () => {
             </div>
             <div className="card-footer text-center">
               <p>
-                Already have an account? <a href="login">Login</a>
+                Already have an account? <a href="/login">Login</a>
               </p>
             </div>
           </div>
