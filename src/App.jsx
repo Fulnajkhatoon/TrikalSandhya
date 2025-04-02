@@ -15,8 +15,7 @@ import GeetaShlokas from "./Geeta_shloka";
 import UserManagement from './UserManagement'
 import AdminSettings from './adminSetting'
 import Sidebar from "./adminSidebar";
-import AddShloka from "./ramayanslok";
-
+import AddShloka from "./ramayanslok"; 
 function App() {
   return (
     <Router>
