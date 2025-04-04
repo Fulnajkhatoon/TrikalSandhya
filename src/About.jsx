@@ -31,7 +31,7 @@ const AboutUs = () => {
               <img src="/img/user1.jpg" className="card-img-top" alt="Priya Patel" 
                 style={{ width: "150px", height: "150px", objectFit: "cover", margin: "auto" }} />
               <div className="card-body">
-                <h5 className="card-title">Priya Patel</h5>
+                <h5 className="card-title">Fulnaj khatoon</h5>
                 <p className="card-text">Content Creator</p>
               </div>
             </div>
