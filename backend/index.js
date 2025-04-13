@@ -6,8 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");  // For Registration
+const authRoutes = require("./routes/authRoutes");  // For Login
+const updateProfileRoute = require("./routes/updateProfileRoute"); // For updating profile details
+
 app.use("/users", userRoutes);
+app.use("/auth", authRoutes);  // Login API
+app.use("/userupdate", updateProfileRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT} 🚀`));

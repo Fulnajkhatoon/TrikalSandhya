@@ -1,58 +1,74 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useEffect } from "react";
 
-const Login = () => {
-  // State to handle form inputs
+const UpdateProfile = () => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    username: "",
   });
 
-  // State to handle error and success messages
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  // Hook for navigation
-  const navigate = useNavigate();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setFormData({
+        email: user.email,
+        username: user.username,
+      });
+    } else {
+      setError("User not logged in!");
+    }
+  }, []);
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      setError("User not logged in!");
+      return;
+    }
+
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
+      console.log("Sending update request with:", {
+        email: user.email,
+        username: formData.username,
+      });
+
+      const response = await fetch("http://localhost:5000/userupdate", {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
+          email: user.email,
+          username: formData.username,
         }),
       });
 
       const data = await response.json();
+      console.log("Server response:", data);
 
       if (response.ok) {
-        // Store user info in localStorage after successful login
-        localStorage.setItem("user", JSON.stringify(data.user)); // Save user info
-
         setSuccess(true);
         setError("");
-        alert("Login successful!");
-        navigate("/"); // Redirect to the dashboard page
+
+        // Update localStorage username
+        const updatedUser = { ...user, username: formData.username };
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+
+        alert("Profile updated successfully!");
       } else {
-        setError(data.message || "Invalid credentials");
+        setError(data.message || "Error updating profile!");
         setSuccess(false);
       }
     } catch (error) {
+      console.error("Update error:", error);
       setError("An error occurred. Please try again.");
       setSuccess(false);
-      console.error("Login error:", error);
     }
   };
 
@@ -62,13 +78,13 @@ const Login = () => {
         <div className="col-md-6">
           <div className="card">
             <div className="card-header text-center">
-              <h3>Login</h3>
+              <h3>Update Profile</h3>
             </div>
             <div className="card-body">
               {error && <div className="alert alert-danger text-center">{error}</div>}
               {success && (
                 <div className="alert alert-success text-center">
-                  Login Successful! Redirecting...
+                  Profile updated successfully!
                 </div>
               )}
               <form onSubmit={handleSubmit}>
@@ -79,27 +95,28 @@ const Login = () => {
                     className="form-control"
                     name="email"
                     value={formData.email}
-                    onChange={handleChange}
-                    required
+                    disabled
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Password</label>
+                  <label className="form-label">Username</label>
                   <input
-                    type="password"
+                    type="text"
                     className="form-control"
-                    name="password"
-                    value={formData.password}
+                    name="username"
+                    value={formData.username}
                     onChange={handleChange}
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-100">Login</button>
+                <button type="submit" className="btn btn-primary w-100">
+                  Update Profile
+                </button>
               </form>
             </div>
             <div className="card-footer text-center">
               <p>
-                Don't have an account? <a href="/register">Register</a>
+                Don't want to update? <a href="/">Go Back</a>
               </p>
             </div>
           </div>
@@ -109,4 +126,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default UpdateProfile;
