@@ -14,11 +14,12 @@ const Sidebar = () => {
           <li className="nav-item">
             <Link className="nav-link" to="/systemsetting">System Setting</Link>
           </li>
+          
           <li className="nav-item">
-            <Link className="nav-link" to="/ramayansholok">Ramayan Slok</Link>
+            <Link className="nav-link" to="/add-ramayan-slok">Ramayan Slok</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/geeta-shlok">Geeta Slok</Link>
+            <Link className="nav-link" to="/addgeeta-shlok">Geeta Slok</Link>
           </li>
         </ul>
       </div>

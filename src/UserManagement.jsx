@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Sidebar from "./adminSidebar"; // Ensure Sidebar component is imported
+import Sidebar from "./AdminSidebar"; // Ensure Sidebar component is imported
 
 const UserManagement = () => {
   const [users, setUsers] = useState([
@@ -22,8 +22,7 @@ const UserManagement = () => {
       <Sidebar />
       <div
         className="d-flex justify-content-start"
-        style={{ flexGrow: 1, padding: "20px" }}
-      >
+        style={{ flexGrow: 1, padding: "20px" }}>
         <div className="bg-light p-4 rounded shadow" style={{ maxWidth: "800px", width: "100%" }}>
           <h2 className="text-center">User Management</h2>
           <table className="table table-striped">

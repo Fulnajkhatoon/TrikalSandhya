@@ -13,6 +13,10 @@ import RamayanChapters from "./RamSeetaMilan"
 import Shloka from "./Shloka"
 import GeetaShlokas from "./Geeta_shloka";
 import UpdateProfile from "./UpdateProfile";
+import UserManagement from './UserManagement'
+import AdminSettings from './adminSetting'
+import Sidebar from "./AdminSidebar";
+import AddRamayanSlok from './AddRamayanShloka'
 function App() {
   return (
     <Router>
@@ -28,7 +32,10 @@ function App() {
         <Route path="/shloka/:chapter" element={<Shloka />} />
         <Route path="/geeta-shlok/:adhyay" element={<GeetaShlokas />} />
         <Route path="/update-profile" element={<UpdateProfile />} />
-
+        <Route path="/systemsetting" element={<AdminSettings />} />
+        <Route path="/UserManagement" element={<UserManagement />} />
+        <Route path="/sidebar" element={<Sidebar />} />
+        <Route path="/add-ramayan-slok" element={<AddRamayanSlok />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
